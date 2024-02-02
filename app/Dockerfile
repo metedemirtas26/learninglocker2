@@ -31,8 +31,8 @@ ENV LL_TAG=v7.1.1
 RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learninglocker
 RUN cd /opt/learninglocker
 RUN git checkout $LL_TAG || true
-RUN npm_config_build_from_source=true yarn install --ignore-engines \
-    && yarn build-all
+RUN npm_config_build_from_source=true yarn install --ignore-engines
+RUN yarn build-all
 
 # make a copy of the origin storage directory that will be used in entrypoint-common.sh
 # to fill up a volume mounted here, if it's empty
