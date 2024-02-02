@@ -17,7 +17,7 @@ RUN apt-get install -y \
         
 RUN wget -qO- https://deb.nodesource.com/setup_10.x | bash
 
-#RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs
 
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -31,7 +31,7 @@ RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learning
 RUN cd /opt/learninglocker
 WORKDIR /opt/learninglocker
 RUN git checkout $LL_TAG || true
-RUN yarn install
+RUN npm_config_build_from_source=true yarn install --ignore-engines
 
 #RUN yarn install --ignore-engines
 RUN yarn --ignore-engines build-all 
