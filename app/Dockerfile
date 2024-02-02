@@ -23,7 +23,7 @@ RUN apt-get install -y nodejs
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install Yarn globally
-RUN npm install -g yarn
+RUN npm install -g yarn@latest
 
 RUN apt-get install -y nodejs
 
@@ -45,6 +45,13 @@ RUN git checkout v2.8.2 || true
 
 # Set working directory
 WORKDIR /opt/learninglocker
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
+    && export NVM_DIR="$HOME/.nvm" \
+    && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
+    && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \
+    && nvm install 8.17.0 \
+    && nvm use 8.17.0
 
 RUN yarn install
 
