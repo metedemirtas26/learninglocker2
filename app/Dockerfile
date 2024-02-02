@@ -18,7 +18,7 @@ RUN apt-get install -y \
         
 RUN wget -qO- https://deb.nodesource.com/setup_10.x | bash
 
-RUN apt-get install -y nodejs
+#RUN apt-get install -y nodejs
 
 RUN rm -rf /var/lib/apt/lists/*
 
