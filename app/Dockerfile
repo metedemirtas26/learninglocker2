@@ -33,7 +33,7 @@ RUN apt-get install -y nodejs
 
 # install LL app
 ENV LL_TAG=v2.8.2
-RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learninglocker
+RUN git clone https://github.com/metedemirtas26/locker-test.git /opt/learninglocker
 
 RUN cd /opt/learninglocker
 
