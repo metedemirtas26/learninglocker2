@@ -31,7 +31,7 @@ ENV LL_TAG=v7.1.1
 RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learninglocker
 RUN cd /opt/learninglocker
 WORKDIR /opt/learninglocker
-RUN git checkout $LL_TAG || true
+#RUN git checkout $LL_TAG || true
 RUN yarn install
 RUN yarn build-all
 
