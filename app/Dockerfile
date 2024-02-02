@@ -13,7 +13,9 @@ RUN apt-get install -y \
         apt-transport-https \
         unzip \
         gettext-base \
-        socat
+        socat \
+        nodejs \
+        npm && \
         
 RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
 
@@ -21,7 +23,13 @@ RUN apt-get install -y nodejs
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g yarn 
+# Install Yarn globally
+RUN npm install -g yarn
+
+# Continue with the rest of your Dockerfile
+RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
+
+RUN apt-get install -y nodejs
 
 # install LL app
 ENV LL_TAG=v2.8.2
