@@ -39,11 +39,12 @@ RUN cd /opt/learninglocker
 
 RUN git checkout v2.8.2 || true
 
+# Set working directory
+WORKDIR /opt/learninglocker
+
 RUN yarn install
 
 RUN yarn build-all
-
-WORKDIR /opt/learninglocker
 
 # make a copy of the origin storage directory that will be used in entrypoint-common.sh
 # to fill up a volume mounted here, if it's empty
