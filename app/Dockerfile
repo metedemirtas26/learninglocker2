@@ -23,7 +23,7 @@ RUN apt-get install -y nodejs
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install Yarn globally
-RUN npm install -g yarn@latest
+RUN npm install -g yarn
 
 
 # install LL app
@@ -32,7 +32,7 @@ RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learning
 RUN cd /opt/learninglocker
 WORKDIR /opt/learninglocker
 RUN git checkout $LL_TAG || true
-RUN npm_config_build_from_source=true yarn install --ignore-engines
+RUN yarn install
 RUN yarn build-all
 
 # make a copy of the origin storage directory that will be used in entrypoint-common.sh
