@@ -35,7 +35,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
 
 # install LL app
 ENV LL_TAG=v2.8.2
-RUN git clone https://github.com/metedemirtas26/locker-test.git /opt/learninglocker
+RUN git clone https://github.com/metedemirtas26/learninglocker /opt/learninglocker
 
 RUN cd /opt/learninglocker
 
