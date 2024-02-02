@@ -34,7 +34,7 @@ WORKDIR /opt/learninglocker
 RUN git checkout $LL_TAG || true
 #RUN yarn install
 
-RUN npm install grpc/grpc-js
+RUN npm install grpc
 
 RUN npm_config_build_from_source=true yarn install --ignore-engines
 RUN yarn build-all
