@@ -13,8 +13,7 @@ RUN apt-get install -y \
         apt-transport-https \
         unzip \
         gettext-base \
-        socat \
-        npm && \
+        socat 
         
 RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
 
@@ -26,6 +25,14 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN npm install -g yarn
 
 RUN apt-get install -y nodejs
+
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
+    && export NVM_DIR="$HOME/.nvm" \
+    && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
+    && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \
+    && nvm install 8.17.0 \
+    && nvm use 8.17.0
 
 # install LL app
 ENV LL_TAG=v2.8.2
