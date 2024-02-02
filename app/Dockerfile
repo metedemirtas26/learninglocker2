@@ -37,7 +37,7 @@ RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learning
 
 RUN cd /opt/learninglocker
 
-RUN git checkout a72ba044ab85697d3eb3a7b86e08228065c297fd
+RUN git checkout v2.8.2 || true
 
 # Set working directory
 WORKDIR /opt/learninglocker
