@@ -32,9 +32,9 @@ RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learning
 RUN cd /opt/learninglocker
 WORKDIR /opt/learninglocker
 RUN git checkout $LL_TAG || true
-#RUN yarn install
+RUN yarn install
 
-RUN yarn install --ignore-engines
+#RUN yarn install --ignore-engines
 RUN yarn --ignore-engines build-all 
 
 # make a copy of the origin storage directory that will be used in entrypoint-common.sh
