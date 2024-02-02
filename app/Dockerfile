@@ -25,8 +25,6 @@ RUN rm -rf /var/lib/apt/lists/*
 # Install Yarn globally
 RUN npm install -g yarn@latest
 
-RUN apt-get install -y nodejs
-
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" \
