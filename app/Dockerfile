@@ -37,7 +37,7 @@ RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learning
 
 RUN cd /opt/learninglocker
 
-RUN git checkout v2.8.2
+RUN git checkout v2.8.2 || true
 
 RUN yarn install
 
