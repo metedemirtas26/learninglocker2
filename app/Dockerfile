@@ -14,7 +14,6 @@ RUN apt-get install -y \
         unzip \
         gettext-base \
         socat \
-        nodejs \
         npm && \
         
 RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
@@ -25,9 +24,6 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Install Yarn globally
 RUN npm install -g yarn
-
-# Continue with the rest of your Dockerfile
-RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
 
 RUN apt-get install -y nodejs
 
