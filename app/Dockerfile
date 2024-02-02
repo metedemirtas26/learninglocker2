@@ -12,10 +12,13 @@ RUN apt-get update \
         apt-transport-https \
         unzip \
         gettext-base \
-        socat \
-    && wget -qO- https://deb.nodesource.com/setup_8.x | bash \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
+        socat
+        
+RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
+
+RUN apt-get install -y nodejs
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g yarn 
 
