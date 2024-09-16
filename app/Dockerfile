@@ -1,7 +1,8 @@
-FROM debian:9
+FROM debian:11
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN apt-get update
+
+RUN apt-get install -y \
         wget \
         procps \
         curl \
@@ -13,21 +14,28 @@ RUN apt-get update \
         unzip \
         gettext-base \
         socat \
-    && wget -qO- https://deb.nodesource.com/setup_8.x | bash \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
+        npm
+        
+RUN wget -qO- https://deb.nodesource.com/setup_10.x | bash
 
-RUN npm install -g yarn 
+RUN apt-get install -y nodejs
+
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install Yarn globally
+RUN npm install -g yarn
+
 
 # install LL app
-ENV LL_TAG=v2.8.2
-RUN git clone https://github.com/LearningLocker/learninglocker.git /opt/learninglocker \
-    && cd /opt/learninglocker \
-    && git checkout $LL_TAG \
-    && yarn install \
-    && yarn build-all
-
+ENV LL_TAG=v7.1.0
+RUN git clone https://github.com/metedemirtas26/learninglocker.git /opt/learninglocker
+RUN cd /opt/learninglocker
 WORKDIR /opt/learninglocker
+RUN git checkout $LL_TAG || true
+RUN npm_config_build_from_source=true yarn install --ignore-engines
+
+#RUN yarn install --ignore-engines
+RUN yarn --ignore-engines build-all 
 
 # make a copy of the origin storage directory that will be used in entrypoint-common.sh
 # to fill up a volume mounted here, if it's empty
